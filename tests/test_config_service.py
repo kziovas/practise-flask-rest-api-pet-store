@@ -1,6 +1,7 @@
 import os
 import json
 from pathlib import Path
+from dotenv import load_dotenv
 from injector import singleton, inject
 
 
@@ -36,3 +37,9 @@ class ConfigService:
             self.host = config_data["HOST"]
             self.app_port = int(config_data["APP_PORT"])
             del config_data
+
+
+if __name__ == "__main__":
+    config_service = ConfigService()
+    config_service.load()
+    print(config_service.safe_key)
