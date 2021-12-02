@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  petstore:
+    image: flask_petstore
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    container_name: petstore_api
+    depends_on:
+      - "db"
+    env_file: env/common.env
+
+  db:
+    image: mongo:3.0.2
+    container_name: pestore_db

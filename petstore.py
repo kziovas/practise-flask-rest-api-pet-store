@@ -3,7 +3,7 @@ from flask import Flask
 from flask_mongoengine import MongoEngine
 from core import ConfigService
 from injector import singleton, inject
-from home.views import home_app
+from views import home_view
 
 
 @singleton
@@ -22,8 +22,9 @@ class PetStore:
             self.config_service.load()
         except Exception as exc:
             self.logger.error(f"Loading configuration file failed due to: {exc}")
+            raise exc
 
         self.mongo_engine.init_app(app)
-        app.register_blueprint(home_app)
+        app.register_blueprint(home_view)
 
         return app

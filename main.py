@@ -1,10 +1,14 @@
 import os
 from flask_script import Manager, Server
-from petstore import create_app
+from petstore import PetStore
+from injector import Injector
+from core import CoreModule
 
 
 def main():
-    app = create_app()
+    injector = Injector(modules=[CoreModule])
+    petstore = injector.get(PetStore)
+    app = petstore.create_app()
     manager = Manager(app)
 
     manager.add_command(
