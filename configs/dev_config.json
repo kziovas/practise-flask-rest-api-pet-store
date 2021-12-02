@@ -1,0 +1,8 @@
+{
+    "SAFE_PASSWORD":"Safe-Password",
+    "LOG_LEVEL":"DEBUG",
+    "MONGODB_HOST":"mongodb",
+    "MONGODB_DB":"petstore",
+    "HOST":"HOST",
+    "APP_PORT":"8000"
+}
