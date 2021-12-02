@@ -18,3 +18,4 @@ services:
   db:
     image: mongo:3.0.2
     container_name: pestore_db
+    restart: always
