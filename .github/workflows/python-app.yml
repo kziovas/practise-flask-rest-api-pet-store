@@ -29,7 +29,9 @@ jobs:
       env:
           CONFIG_FILE_NAME: dev_config.json
           CONFIG_FOLDER_NAME: configs
-      
+    - name: Run service
+      run: |
+        python main.py runserver
     - name: Test with pytest
       run: |
         pytest tests -W ignore
