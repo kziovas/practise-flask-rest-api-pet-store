@@ -23,3 +23,4 @@ Tools used:
 
 ## Installation and deployment
 
+[![Flask PetAPI](https://github.com/kziovas/practise-flask-rest-api-pet-store/actions/workflows/python-app.yml/badge.svg)](https://github.com/kziovas/practise-flask-rest-api-pet-store/actions/workflows/python-app.yml)
