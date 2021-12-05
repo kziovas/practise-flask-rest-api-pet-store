@@ -18,3 +18,5 @@ typing-extensions==4.0.1
 Werkzeug==2.0.2
 WTForms==3.0.0
 zipp==3.6.0
+pytest==6.2.0
+
