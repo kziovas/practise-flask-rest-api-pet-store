@@ -26,10 +26,8 @@ jobs:
         pip install wheel
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Set ENV variables
-      env:
-          CONFIG_FILE_NAME: dev_config.json
-          CONFIG_FOLDER_NAME: configs
-      run: echo "Environmen variables were set"
+      run: export $(cat env/common.env | xargs)
+      
     - name: Run service
       run: |
         python main.py runserver
