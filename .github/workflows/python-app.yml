@@ -13,7 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+     CONFIG_FILE_NAME: dev_config.json
+      CONFIG_FOLDER_NAME: configs
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.7
@@ -25,13 +27,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install wheel
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Set env variables
-      run: export $(cat env/common.env | xargs)
       
     - name: Run service
       run: |
-        echo $CONFIG_FILE_NAME
-        echo $CONFIG_FOLDER
         python main.py runserver
     - name: Test with pytest
       run: |
