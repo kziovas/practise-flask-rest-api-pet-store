@@ -29,6 +29,7 @@ jobs:
       env:
           CONFIG_FILE_NAME: dev_config.json
           CONFIG_FOLDER_NAME: configs
+      run: echo "Environmen variables were set"
     - name: Run service
       run: |
         python main.py runserver
