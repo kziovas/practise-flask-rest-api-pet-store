@@ -9,6 +9,7 @@ def main():
     injector = Injector(modules=[CoreModule])
     petstore = injector.get(PetStore)
     app = petstore.create_app()
+    app.config["JSONIFY_PRETTYPRINT_REGULAR"] = False
     manager = Manager(app)
 
     manager.add_command(
