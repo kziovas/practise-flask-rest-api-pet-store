@@ -6,7 +6,7 @@ It is an exercise on using Flask, Python and various other technologies and desi
 
 Methodologies used:
   - Pluggable class/method based views [Pluggable Views](https://flask.palletsprojects.com/en/2.0.x/views/)
-  - API building conventions from  [OpenAPI specfifications](https://swagger.io/specification/)
+  - REST API building conventions from  [OpenAPI specfifications](https://swagger.io/specification/)
   - Dependency injection
   - Containerization
   - Automated testing
