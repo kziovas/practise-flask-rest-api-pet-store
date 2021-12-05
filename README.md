@@ -5,9 +5,11 @@ The project is meant to be a starting point, an experimentation or a basic examp
 It is an exercise on using Flask, Python and various other technologies and design methodologies.
 
 Methodologies used:
+  - Pluggable class/method based views [Pluggable Views](https://flask.palletsprojects.com/en/2.0.x/views/)
   - API building conventions from  [OpenAPI specfifications](https://swagger.io/specification/)
   - Dependency injection
   - Containerization
+  - Automated testing
 
 
 Tools used:
@@ -15,6 +17,7 @@ Tools used:
   - Docker
   - Docker Compose (for orchestration)
   - Injector
+  - Pytest
 
 ---
 
