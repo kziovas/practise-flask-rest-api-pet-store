@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
      CONFIG_FILE_NAME: dev_config.json
-      CONFIG_FOLDER_NAME: configs
+     CONFIG_FOLDER_NAME: configs
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.7
