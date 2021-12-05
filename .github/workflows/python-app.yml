@@ -30,7 +30,7 @@ jobs:
       
     - name: Run service
       run: |
-        nohup python main.py runserver
+        nohup python main.py runserver &
     - name: Test with pytest
       run: |
         pytest tests -W ignore
