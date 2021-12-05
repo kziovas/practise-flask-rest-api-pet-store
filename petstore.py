@@ -2,9 +2,8 @@ from logging import Logger
 from flask import Flask
 from flask_mongoengine import MongoEngine
 from core import ConfigService
-from api import PetsController
 from injector import singleton, inject
-from views import home_view, PetsViewManager
+from api import home_view, PetsController
 
 
 @singleton
@@ -15,7 +14,7 @@ class PetStore:
         logger: Logger,
         mongo_engine: MongoEngine,
         config_service: ConfigService,
-        pets_view_manager: PetsViewManager,
+        pets_view_manager: PetsController,
     ) -> None:
         self.logger = logger
         self.mongo_engine = mongo_engine
