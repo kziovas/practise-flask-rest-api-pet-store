@@ -10,6 +10,7 @@ Methodologies used:
   - Dependency injection
   - Containerization
   - Automated testing
+  - CI/CD for testing and building
 
 
 Tools used:
@@ -18,6 +19,7 @@ Tools used:
   - Docker Compose (for orchestration)
   - Injector
   - Pytest
+  - GitHub CI/CD
 
 ---
 
