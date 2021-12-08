@@ -33,4 +33,4 @@ class PetsController(MethodView):
 
         new_pet = {"id": len(self.pets) + 1, "name": request.json["name"]}
         self.pets.append(new_pet)
-        return jsonify(message=f"new pet added: {self.pets}"), HTTPStatus.CREATED
+        return jsonify(message=f"new pet added: {new_pet}"), HTTPStatus.CREATED
