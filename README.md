@@ -11,6 +11,8 @@ Methodologies used:
   - Containerization
   - Automated testing
   - CI/CD for testing and building
+  - Microservices
+  - Class composition
 
 
 Tools used:
