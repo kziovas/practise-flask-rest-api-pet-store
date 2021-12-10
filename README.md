@@ -17,6 +17,7 @@ Methodologies used:
 
 Tools used:
   - Flask
+  - MongoDB
   - Docker
   - Docker Compose (for orchestration)
   - Injector
