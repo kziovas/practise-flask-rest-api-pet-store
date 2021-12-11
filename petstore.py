@@ -3,7 +3,7 @@ from flask import Flask
 from flask_mongoengine import MongoEngine
 from core import ConfigService
 from injector import singleton, inject
-from api import home_view, PetsController
+from api import home_bp, PetsController
 
 
 @singleton
@@ -31,7 +31,7 @@ class PetStore:
 
         self.mongo_engine.init_app(app)
         self.pets_view_manager.configure()
-        app.register_blueprint(home_view)
-        app.register_blueprint(self.pets_view_manager.pets_view)
+        app.register_blueprint(home_bp)
+        app.register_blueprint(self.pets_view_manager.pets_bp)
 
         return app
