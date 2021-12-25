@@ -1,0 +1,30 @@
+petstore - ERROR - Loading configuration file failed due to: 'CONFIG_FOLDER_NAME'
+Traceback (most recent call last):
+  File "main.py", line 17, in <module>
+    main()
+  File "main.py", line 10, in main
+    app = petstore.create_app()
+  File "/home/kostas/Desktop/PythonGeneral/practise-flask-rest-api-pet-store/petstore.py", line 30, in create_app
+    raise exc
+  File "/home/kostas/Desktop/PythonGeneral/practise-flask-rest-api-pet-store/petstore.py", line 27, in create_app
+    self.config_service.load()
+  File "/home/kostas/Desktop/PythonGeneral/practise-flask-rest-api-pet-store/core/config_service.py", line 21, in load
+    self.config_folder_name = os.environ["CONFIG_FOLDER_NAME"]
+  File "/home/kostas/.pyenv/versions/3.7.4/lib/python3.7/os.py", line 678, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'CONFIG_FOLDER_NAME'
+petstore - ERROR - Loading configuration file failed due to: 'CONFIG_FOLDER_NAME'
+Traceback (most recent call last):
+  File "main.py", line 17, in <module>
+    main()
+  File "main.py", line 10, in main
+    app = petstore.create_app()
+  File "/home/kostas/Desktop/PythonGeneral/practise-flask-rest-api-pet-store/petstore.py", line 30, in create_app
+    raise exc
+  File "/home/kostas/Desktop/PythonGeneral/practise-flask-rest-api-pet-store/petstore.py", line 27, in create_app
+    self.config_service.load()
+  File "/home/kostas/Desktop/PythonGeneral/practise-flask-rest-api-pet-store/core/config_service.py", line 21, in load
+    self.config_folder_name = os.environ["CONFIG_FOLDER_NAME"]
+  File "/home/kostas/.pyenv/versions/3.7.4/lib/python3.7/os.py", line 678, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'CONFIG_FOLDER_NAME'
