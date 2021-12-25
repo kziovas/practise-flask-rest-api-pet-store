@@ -31,7 +31,6 @@ jobs:
     - name: Run service
       run: |
         nohup python main.py runserver &
-        sleep 5
     - name: Test with pytest
       run: |
         pytest tests -W ignore
