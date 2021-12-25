@@ -3,7 +3,7 @@ import aiohttp
 
 
 @pytest.mark.asyncio
-async def test_storage_status():
+async def test_homepage():
     """This test assumes that the PetStore API service is running"""
 
     async with aiohttp.ClientSession() as session:

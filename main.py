@@ -10,7 +10,7 @@ def main():
     app = petstore.create_app()
     app.config["JSONIFY_PRETTYPRINT_REGULAR"] = False
  
-    app.run(host=os.getenv("HOST", "0.0.0.0"),port=int(os.getenv("APP_PORT", 8000)))
+    app.run(host=os.getenv("HOST", "localhost"),port=int(os.getenv("APP_PORT", 8000)))
 
 
 if __name__ == "__main__":
