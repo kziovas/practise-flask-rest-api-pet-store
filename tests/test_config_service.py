@@ -11,5 +11,5 @@ def test_config_service():
     load_dotenv("env/common.env")
     config_service = ConfigService()
     config_service.load()
-    config_service.config_folder_path != None
-    config_service.config_folder_name != None
+    assert config_service.config_folder_path != None
+    assert config_service.config_folder_name != None
