@@ -2,7 +2,7 @@ from http import HTTPStatus
 import jmespath
 from flask.views import MethodView
 from flask import Blueprint
-from middlewares import authenticator
+from utilities import authenticator
 from injector import singleton, inject
 from flask import jsonify, abort, request
 
