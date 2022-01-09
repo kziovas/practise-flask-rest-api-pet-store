@@ -42,7 +42,7 @@ class AcessController(MethodView):
 
     def configure(self):
         self.access_bp = Blueprint("access_view", __name__)
-        self.access_view = UserController.as_view("access")
+        self.access_view = AcessController.as_view("access")
         self.access_bp.add_url_rule('/users/access/', view_func=self.access_view, methods = ['POST',])
 
     def post(self):
@@ -56,7 +56,8 @@ class AcessController(MethodView):
             return jsonify({"message":"Wrong credentials"}), HTTPStatus.FORBIDDEN
         else:
             # generate a token
-            if bcrypt.hashpw(request.json.get(USER_PASSWORD).encode('utf-8')) == user.user_password:
+            user_pass_encoded = user.user_pass.encode('utf-8')
+            if bcrypt.hashpw(request.json.get(USER_PASSWORD).encode('utf-8'), user_pass_encoded) == user.user_pass.encode('utf-8'):
                 # delete existing tokens
                 existing_tokens = AccessModel.objects.filter(user=user).delete()
                 token = str(uuid.uuid4())
