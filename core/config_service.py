@@ -8,6 +8,7 @@ from injector import singleton, inject
 class ConfigService:
     def __init__(self) -> None:
         self.config_filepath: str = None
+        self.flask_settings_filepath: str = None
         self.safe_key: str = None
         self.log_level: str = None
         self.mongo_host: str = None
@@ -22,6 +23,11 @@ class ConfigService:
         self.config_folder_path = (
             Path(__file__).parents[1].absolute().joinpath(self.config_folder_name)
         )
+
+        self.flask_settings_filepath = self.config_folder_path.joinpath(
+            os.environ["FLASK_SETTINGS_FILE_NAME"]
+        )
+        
         self.config_filepath = self.config_folder_path.joinpath(
             os.environ["CONFIG_FILE_NAME"]
         )
@@ -29,7 +35,6 @@ class ConfigService:
         with open(self.config_filepath, "r") as config_file:
             config_data = json.load(config_file)
 
-            self.safe_key = config_data["SAFE_PASSWORD"]
             self.log_level = config_data["LOG_LEVEL"]
             self.mongo_host = config_data["MONGODB_HOST"]
             self.mongo_db = config_data["MONGODB_DB"]

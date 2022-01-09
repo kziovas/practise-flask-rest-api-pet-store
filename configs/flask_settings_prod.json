@@ -1,0 +1,5 @@
+{ 
+    "SECRET_KEY" : "secret_key",
+    "DEBUG" : true,
+    "MONGODB_SETTINGS": { "host":"mongodb://petstore_mongo/petstore"}
+}

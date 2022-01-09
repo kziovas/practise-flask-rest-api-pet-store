@@ -1,5 +1,4 @@
 from http import HTTPStatus
-import jmespath
 from flask.views import MethodView
 from flask import Blueprint
 from utilities import authenticator

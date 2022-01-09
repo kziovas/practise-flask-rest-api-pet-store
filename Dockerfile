@@ -21,7 +21,5 @@ WORKDIR /app
 # Pip install requirements
 RUN pip install --user -r requirements.txt
 
-# Port to expose
-EXPOSE 8000
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 CMD ["python", "main.py"]

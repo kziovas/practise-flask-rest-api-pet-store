@@ -1,4 +1,8 @@
 version: '3.7'
+networks:
+  petstore:
+    name: petstore
+    driver: bridge
 
 services:
   petstore:
@@ -8,14 +12,21 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    networks:
+      - petstore
     volumes:
       - .:/app
     container_name: petstore_api
     depends_on:
-      - "db"
-    env_file: env/common.env
+      - "petstore_mongo"
+    env_file: env/prod.env
 
-  db:
+  petstore_mongo:
     image: mongo:3.0.2
-    container_name: pestore_db
-    restart: always
+    container_name: petstore_mongo
+    hostname: "petstore_mongo"
+    ports:
+      - 27017:27017
+    networks:
+      - petstore
+    restart: unless-stopped
