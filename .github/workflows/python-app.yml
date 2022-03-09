@@ -31,7 +31,15 @@ jobs:
 
     - name: Run petstore
       run: |
-        docker-compose -f docker-compose.yml up petstore
+        docker-compose -f docker-compose.yml build petstore
+
+    - name: Run petstore
+      run: |
+        nohup docker-compose -f docker-compose.yml up petstore &
+
+    - name: Sleep for 5 sec
+      run: |
+        sleep 5
 
     - name: Run docker ps
       run: |
