@@ -27,7 +27,9 @@ Tools used:
 ---
 
 ## Installation and deployment
-
+The deployment process is made easy with the use of `docker-compose`. Simply download the repo, change directories to the main repo folder and run the following command:
+`docker-compose -f docker-compose.yml up petstore
+`
 
 ---
 [![Flask PetAPI](https://github.com/kziovas/practise-flask-rest-api-pet-store/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/kziovas/practise-flask-rest-api-pet-store/actions/workflows/python-app.yml)
