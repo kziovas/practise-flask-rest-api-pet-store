@@ -29,9 +29,13 @@ jobs:
         pip install wheel
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Run services
+    - name: Run petstore
       run: |
         nohup docker-compose -f docker-compose.yml up petstore &
+
+    - name: Run docker ps
+      run: |
+        docker ps -a
       
     - name: Test with pytest
       run: |
