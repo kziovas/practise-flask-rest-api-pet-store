@@ -11,5 +11,5 @@ async def test_homepage():
     time.sleep(2)
 
     async with aiohttp.ClientSession() as session:
-        async with session.get("http://localhost:8000/") as response:
+        async with session.get("http://0.0.0.0:8000/") as response:
             assert response.status == 200
