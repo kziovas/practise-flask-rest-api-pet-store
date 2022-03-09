@@ -16,6 +16,7 @@ class UserController(MethodView):
         self.user_bp = Blueprint("users_view", __name__)
         self.users_view = UserController.as_view("users")
         self.user_bp.add_url_rule('/users/', view_func=self.users_view, methods = ['POST',])
+        self.user_bp.add_url_rule('/users/<user_id>', view_func=self.users_view, methods=['GET','PUT','DELETE'])
 
     def post(self):
         if not request.json:
@@ -35,6 +36,33 @@ class UserController(MethodView):
                 user_pass=hashed_password
             ).save()
             return jsonify({'result': 'User has been registered'}), HTTPStatus.OK
+
+    def get(self,user_id):
+        if user_id:
+            user: UserModel = None
+            try:
+                user = UserModel.objects.filter(user_id=user_id).first()
+                return jsonify({"user": user}), HTTPStatus.OK
+            except Exception as exc:
+                return (
+                f"The user id provided: {user_id}, does not exist",
+                HTTPStatus.BAD_REQUEST,
+            )
+
+    def delete(self,user_id):
+        if user_id:
+            user: UserModel = None
+            try:
+                user = UserModel.objects.filter(user_id=user_id).first()
+                return jsonify({"user": user}), HTTPStatus.OK
+            except Exception as exc:
+                return (
+                f"The user id provided: {user_id}, does not exist",
+                HTTPStatus.BAD_REQUEST,
+            )
+            finally:
+                if user:
+                    user.delete()
 
 class AcessController(MethodView):
     def __init__(self) -> None:
@@ -69,7 +97,7 @@ class AcessController(MethodView):
                     expiration=expiration
                 ).save()
                 expiration_formated = expiration.isoformat("T") + "Z"
-                return jsonify({'New token created ': token, 'Token expiration': expiration_formated}), HTTPStatus.OK
+                return jsonify({'New token created': token, 'Token expiration': expiration_formated}), HTTPStatus.OK
             else:
      
                 return jsonify({'message': "Wrong creadentials provided!"}), HTTPStatus.FORBIDDEN
