@@ -31,7 +31,7 @@ jobs:
 
     - name: Run petstore
       run: |
-        nohup docker-compose -f docker-compose.yml up petstore &
+        docker-compose -f docker-compose.yml up petstore
 
     - name: Run docker ps
       run: |
