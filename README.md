@@ -13,6 +13,7 @@ Methodologies used:
   - CI/CD for testing and building
   - Microservices
   - Class composition
+  - Data validation
 
 
 Tools used:
@@ -23,6 +24,7 @@ Tools used:
   - Injector
   - Pytest
   - GitHub CI/CD
+  - Jsonschema
 
 ---
 
