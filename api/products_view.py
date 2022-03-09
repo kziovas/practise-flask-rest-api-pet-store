@@ -1,5 +1,7 @@
 import uuid
 import json
+from jsonschema import validate
+from jsonschema import exceptions as schema_exceptions
 from datetime import datetime, timedelta
 from utilities import authenticator
 from flask.views import MethodView
@@ -8,6 +10,7 @@ from flask import request, Blueprint, abort, jsonify
 from injector import singleton, inject
 from models import ProductModel
 from shared import PAGE_OBJECT_LIMIT, PAGE_LIMIT, PRODUCT_ID
+from schemas import product_schema
 
 
 @singleton
@@ -45,33 +48,32 @@ class ProductController(MethodView):
     def post(self):
         if not request.json:
             abort(HTTPStatus.BAD_REQUEST.value)
-        elif (
-            not "product_name" in request.json
-            or not "price"
-            or not "stock" in request.json
-        ):
+
+        try:
+            validate(request.json, product_schema)
+            existing_product = ProductModel.objects.filter(
+                product_name=request.json.get("product_name")
+            ).first()
+
+            if existing_product:
+                return (
+                    jsonify({"message": "Product name already exists"}),
+                    HTTPStatus.BAD_REQUEST,
+                )
+            else:
+                # add product to database
+                product = ProductModel(
+                    product_id=str(uuid.uuid4()),
+                    product_name=request.json.get("product_name"),
+                    price=request.json.get("price"),
+                    stock=request.json.get("stock"),
+                ).save()
+                return jsonify({"result": "Product has been registered"}), HTTPStatus.OK
+        except schema_exceptions.ValidationError as ex:
             return (
                 jsonify({"message": "Missing product_name, price or stock"}),
                 HTTPStatus.BAD_REQUEST,
             )
-        existing_product = ProductModel.objects.filter(
-            product_name=request.json.get("product_name")
-        ).first()
-
-        if existing_product:
-            return (
-                jsonify({"message": "Product name already exists"}),
-                HTTPStatus.BAD_REQUEST,
-            )
-        else:
-            # add product to database
-            product = ProductModel(
-                product_id=str(uuid.uuid4()),
-                product_name=request.json.get("product_name"),
-                price=request.json.get("price"),
-                stock=request.json.get("stock"),
-            ).save()
-            return jsonify({"result": "Product has been registered"}), HTTPStatus.OK
 
     def put(self, product_name):
         if product_name:
